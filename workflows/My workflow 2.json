@@ -1,0 +1,72 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "creo un post",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-12T09:22:27.875Z",
+  "id": "tHKvz6ZxP8He55a8",
+  "isArchived": true,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "937f447d-c55d-4b81-baf9-d006d57e68b0",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "title": "Test Pill",
+        "additionalFields": {
+          "content": "Contenido del post",
+          "status": "draft",
+          "categories": "={{ 45, 0 }}"
+        }
+      },
+      "type": "n8n-nodes-base.wordpress",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "cee2b9bf-04de-4203-8460-d689ba739442",
+      "name": "creo un post"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-11-12T09:22:27.884Z",
+      "updatedAt": "2025-11-12T09:22:27.884Z",
+      "role": "workflow:owner",
+      "workflowId": "tHKvz6ZxP8He55a8",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-12T11:27:08.000Z",
+  "versionId": "0ab23ebd-0450-4201-82b5-deca822788ba"
+}
