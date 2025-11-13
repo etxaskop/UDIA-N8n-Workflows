@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "connections": {
     "Simple Memory": {
       "ai_memory": [
@@ -203,6 +203,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-11-11T13:08:58.000Z",
+  "updatedAt": "2025-11-13T12:23:32.000Z",
   "versionId": "74c3d619-10f7-4547-846d-04ac0ebd6cad"
 }
