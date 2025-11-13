@@ -1,0 +1,1302 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "RSS Read1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Date & Time1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time2",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Date & Time3",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Remove Duplicates",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Date & Time1": {
+      "main": [
+        []
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Summarize",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Rename Keys",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rename Keys": {
+      "main": [
+        [
+          {
+            "node": "Sort",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Compression",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Crypto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-04T18:58:35.185Z",
+  "id": "CtTEWLJgKimVZVia",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] Transformación de datos",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "20e5226b-0123-4668-8f42-461a551b0930",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://es.wired.com/feed/rss",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "80318ba9-25e5-4bcd-8288-d493ee781fb3",
+      "name": "RSS Read"
+    },
+    {
+      "parameters": {
+        "operation": "addToDate",
+        "magnitude": "={{ $json.isoDate }}",
+        "timeUnit": "years",
+        "duration": 5,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        624,
+        -720
+      ],
+      "id": "e6f96f5b-2411-40d6-9d13-3db40d2db6ef",
+      "name": "Date & Time"
+    },
+    {
+      "parameters": {
+        "operation": "extractDate",
+        "date": "={{ $json.isoDate }}",
+        "part": "year",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        624,
+        -560
+      ],
+      "id": "2ea2072f-559a-471b-a581-cee2e8ea6f91",
+      "name": "Date & Time1"
+    },
+    {
+      "parameters": {
+        "operation": "formatDate",
+        "date": "={{ $json.isoDate }}",
+        "format": "MMMM dd yyyy",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        624,
+        -400
+      ],
+      "id": "2335a6c2-ca7b-4f9e-a4e5-087ffeccc296",
+      "name": "Date & Time2"
+    },
+    {
+      "parameters": {
+        "operation": "subtractFromDate",
+        "magnitude": "={{ $json.isoDate }}",
+        "timeUnit": "years",
+        "duration": 20,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dateTime",
+      "typeVersion": 2,
+      "position": [
+        624,
+        -256
+      ],
+      "id": "0994d2cf-e9f9-488f-bfbf-1885955116dc",
+      "name": "Date & Time3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "506860bc-cf7a-4ba4-916d-6e91064a0701",
+              "leftValue": "={{ $json.creator }}",
+              "rightValue": "Jorge",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        624,
+        0
+      ],
+      "id": "8f5aa2cf-094b-4ef7-95ba-d8ac93b6c430",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "maxItems": 5,
+        "keep": "lastItems"
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        624,
+        208
+      ],
+      "id": "5cfba3ba-a4db-4260-a90d-f4eb6c9d5250",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "compare": "allFieldsExcept",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.removeDuplicates",
+      "typeVersion": 2,
+      "position": [
+        624,
+        352
+      ],
+      "id": "2b7f9dc5-04e1-4f90-88d2-8b3a459c0872",
+      "name": "Remove Duplicates"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "link",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        624,
+        512
+      ],
+      "id": "05cb82a5-60d5-44cb-b711-dda09b75fdd9",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "link",
+              "renameField": true,
+              "outputFieldName": "enlace"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        832,
+        512
+      ],
+      "id": "e914585d-1ecd-48ed-b2a6-cf6aa6bff4d9",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "url": "https://es.wired.com/feed/negocios/rss",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        224,
+        656
+      ],
+      "id": "b81ae2ea-18a4-4a92-b762-bf79b64229db",
+      "name": "RSS Read1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        624,
+        672
+      ],
+      "id": "2896ce6f-bdc2-4498-be4b-b65b68758f5f",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "keys": {
+          "key": [
+            {
+              "currentKey": "creator",
+              "newKey": "medio"
+            },
+            {
+              "currentKey": "title",
+              "newKey": "titulo"
+            }
+          ]
+        },
+        "additionalOptions": {}
+      },
+      "type": "n8n-nodes-base.renameKeys",
+      "typeVersion": 1,
+      "position": [
+        832,
+        672
+      ],
+      "id": "6c394dcb-9a39-4130-9f44-5a972e193347",
+      "name": "Rename Keys"
+    },
+    {
+      "parameters": {
+        "sortFieldsUi": {
+          "sortField": [
+            {
+              "fieldName": "pubDate"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.sort",
+      "typeVersion": 1,
+      "position": [
+        1040,
+        672
+      ],
+      "id": "3d047a6d-5384-4747-a2e5-bcee43d9c732",
+      "name": "Sort"
+    },
+    {
+      "parameters": {
+        "fieldsToSummarize": {
+          "values": [
+            {
+              "aggregation": "concatenate",
+              "field": "creator"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.summarize",
+      "typeVersion": 1.1,
+      "position": [
+        640,
+        832
+      ],
+      "id": "eecb057c-0cdd-4ca1-8493-900effcad65b",
+      "name": "Summarize"
+    },
+    {
+      "parameters": {
+        "operation": "toJson",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        640,
+        960
+      ],
+      "id": "01a1dc65-896b-4d0b-9293-ea144ef34958",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "operation": "compress",
+        "fileName": "=data_rss_{{ $runIndex }}.zip"
+      },
+      "type": "n8n-nodes-base.compression",
+      "typeVersion": 1.1,
+      "position": [
+        848,
+        960
+      ],
+      "id": "6f39da81-6b8d-4413-88c4-9d82cbe74c5d",
+      "name": "Compression"
+    },
+    {
+      "parameters": {
+        "binaryData": true
+      },
+      "type": "n8n-nodes-base.crypto",
+      "typeVersion": 1,
+      "position": [
+        864,
+        1120
+      ],
+      "id": "3341073f-d2d1-4e8f-82c6-74eb7eb57e91",
+      "name": "Crypto"
+    }
+  ],
+  "pinData": {
+    "Remove Duplicates": [
+      {
+        "json": {
+          "creator": "Jorge Garay",
+          "title": "Las largas caminatas pueden retrasar los efectos del Alzheimer por varios años",
+          "link": "https://es.wired.com/articulos/las-largas-caminatas-pueden-retrasar-los-efectos-del-alzheimer-por-varios-anos",
+          "pubDate": "Tue, 04 Nov 2025 18:39:18 +0000",
+          "dc:creator": "Jorge Garay",
+          "content": "Un estudio con podómetros y escáneres cerebrales revela que la actividad física modera el avance del Alzheimer en adultos mayores con riesgo elevado.",
+          "contentSnippet": "Un estudio con podómetros y escáneres cerebrales revela que la actividad física modera el avance del Alzheimer en adultos mayores con riesgo elevado.",
+          "guid": "690a2b5654cb808332f36242",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-04T18:39:18.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Fernanda González",
+          "title": "Cómo usar WhatsApp en tu Apple Watch: guía para activar la nueva app nativa",
+          "link": "https://es.wired.com/articulos/como-usar-whatsapp-en-tu-apple-watch-guia-para-activar-la-nueva-app-nativa",
+          "pubDate": "Tue, 04 Nov 2025 18:11:42 +0000",
+          "dc:creator": "Fernanda González",
+          "content": "WhatsApp es actualmente la aplicación de mensajería más utilizada en el mundo. Sin embargo, enfrenta una creciente competencia, por lo que ha buscado nuevas formas de ampliar el acceso a su servicio a través de distintos dispositivos.",
+          "contentSnippet": "WhatsApp es actualmente la aplicación de mensajería más utilizada en el mundo. Sin embargo, enfrenta una creciente competencia, por lo que ha buscado nuevas formas de ampliar el acceso a su servicio a través de distintos dispositivos.",
+          "guid": "690a328b54cb808332f36243",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-04T18:11:42.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Dalila Sarabia",
+          "title": "La Ciudad de México es la más videovigilada de América, pero la inseguridad no cede",
+          "link": "https://es.wired.com/articulos/la-ciudad-de-mexico-es-la-mas-videovigilada-de-america-pero-la-inseguridad-no-cede",
+          "pubDate": "Tue, 04 Nov 2025 17:51:49 +0000",
+          "dc:creator": "Dalila Sarabia",
+          "content": "Con 83,000 cámaras públicas instaladas, la Ciudad de México es la urbe más vigilada del continente. Las funciones del C5 CDMX son vitales: el 25% de las carpetas de investigación se apoyan en lo que captan sus cámaras. Pero los niveles de impunidad se mantienen y aún quedan varios dilemas éticos pendientes, como la privacidad.",
+          "contentSnippet": "Con 83,000 cámaras públicas instaladas, la Ciudad de México es la urbe más vigilada del continente. Las funciones del C5 CDMX son vitales: el 25% de las carpetas de investigación se apoyan en lo que captan sus cámaras. Pero los niveles de impunidad se mantienen y aún quedan varios dilemas éticos pendientes, como la privacidad.",
+          "guid": "6908d6c351a3ad160bbd97f1",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-04T17:51:49.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Tulsi Rauniyar",
+          "title": "Cómo la generación Z derrocó al líder de Nepal y eligió uno nuevo, todo usando Discord",
+          "link": "https://es.wired.com/articulos/como-la-generacion-z-derroco-al-lider-de-nepal-y-eligio-uno-nuevo-todo-usando-discord",
+          "pubDate": "Tue, 04 Nov 2025 17:41:46 +0000",
+          "dc:creator": "Tulsi Rauniyar",
+          "content": "La revolución empezó en las redes sociales. Terminó con protestas, violencia y una encuesta en línea para elegir al nuevo primer ministro.",
+          "contentSnippet": "La revolución empezó en las redes sociales. Terminó con protestas, violencia y una encuesta en línea para elegir al nuevo primer ministro.",
+          "guid": "690a17ff9d089f25502f6759",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-04T17:41:46.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Julian Chokkattu",
+          "title": "¿Qué iPhone deberías comprar (o evitar)?",
+          "link": "https://es.wired.com/galerias/mejores-iphones-para-comprar-o-evitar-en-este-momento",
+          "pubDate": "Tue, 04 Nov 2025 17:08:27 +0000",
+          "dc:creator": "Julian Chokkattu",
+          "content": "Ahora que la alineación iPhone 17 está aquí, te contamos todos los detalles sobre los smartphones de Apple para que encuentres el modelo ideal para ti.",
+          "contentSnippet": "Ahora que la alineación iPhone 17 está aquí, te contamos todos los detalles sobre los smartphones de Apple para que encuentres el modelo ideal para ti.",
+          "guid": "644827fde1c13787dd8e2f6e",
+          "categories": [
+            "Gear / Buying Guides"
+          ],
+          "isoDate": "2025-11-04T17:08:27.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Jorge Garay",
+          "title": "Encuentran la llamarada de agujero negro más brillante de la historia: 10 billones de veces más luminosa que el Sol",
+          "link": "https://es.wired.com/articulos/encuentran-la-llamarada-de-agujero-negro-mas-brillante-de-la-historia-10-billones-de-veces-mas-luminosa-que-el-sol",
+          "pubDate": "Tue, 04 Nov 2025 17:01:38 +0000",
+          "dc:creator": "Jorge Garay",
+          "content": "Un agujero negro desgarró una estrella masiva a 10,000 millones de años luz, generando la llamarada más brillante jamás vista.",
+          "contentSnippet": "Un agujero negro desgarró una estrella masiva a 10,000 millones de años luz, generando la llamarada más brillante jamás vista.",
+          "guid": "690a19b17eb0676f542accc0",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-04T17:01:38.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Kevin Carboni",
+          "title": "Los 20 ejércitos más poderosos del mundo",
+          "link": "https://es.wired.com/articulos/los-15-ejercitos-mas-poderosos-del-mundo",
+          "pubDate": "Tue, 04 Nov 2025 16:23:12 +0000",
+          "dc:creator": "Kevin Carboni",
+          "content": "Estados Unidos, Rusia y China siguen ocupando los primeros puestos. Francia subió varios puestos superando a Japón, Turquía y Pakistán con respecto al año pasado, mientras que las naciones latinoamericanas de habla hispana siguen relegadas a posiciones inferiores.",
+          "contentSnippet": "Estados Unidos, Rusia y China siguen ocupando los primeros puestos. Francia subió varios puestos superando a Japón, Turquía y Pakistán con respecto al año pasado, mientras que las naciones latinoamericanas de habla hispana siguen relegadas a posiciones inferiores.",
+          "guid": "66a418a37576df32352934b3",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-04T16:23:12.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Simone Valesini",
+          "title": "Qué son los nitazenos, la nueva generación de drogas que podría relevar al fentanilo",
+          "link": "https://es.wired.com/articulos/que-son-los-nitazenos-la-nueva-generacion-de-drogas-que-podria-relevar-al-fentanilo",
+          "pubDate": "Tue, 04 Nov 2025 15:54:46 +0000",
+          "dc:creator": "Simone Valesini",
+          "content": "Estas sustancias ya han matado a más de 200 personas en ambos lados del Atlántico y están consideradas entre las drogas de diseño más peligrosas.",
+          "contentSnippet": "Estas sustancias ya han matado a más de 200 personas en ambos lados del Atlántico y están consideradas entre las drogas de diseño más peligrosas.",
+          "guid": "690a17986fb006409310d0e2",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-04T15:54:46.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Riccardo Piccolo",
+          "title": "Microsoft enviará miles de chips de Nvidia a los Emiratos Árabes Unidos, un régimen bajo escrutinio",
+          "link": "https://es.wired.com/articulos/microsoft-enviara-miles-de-chips-de-nvidia-a-los-emiratos-arabes-unidos-un-regimen-bajo-escrutinio",
+          "pubDate": "Tue, 04 Nov 2025 15:19:39 +0000",
+          "dc:creator": "Riccardo Piccolo",
+          "content": "Microsoft obtiene el visto bueno para exportar procesadores avanzados a Abu Dabi, lo que reaviva las dudas sobre los vínculos entre las grandes tecnológicas y los países que violan los derechos humanos.",
+          "contentSnippet": "Microsoft obtiene el visto bueno para exportar procesadores avanzados a Abu Dabi, lo que reaviva las dudas sobre los vínculos entre las grandes tecnológicas y los países que violan los derechos humanos.",
+          "guid": "690a0dda4350997522018bda",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-04T15:19:39.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Will Knight",
+          "title": "OpenAI firma un acuerdo de 38,000 millones de dólares con Amazon",
+          "link": "https://es.wired.com/articulos/openai-firma-un-acuerdo-de-38000-millones-de-dolares-con-amazon",
+          "pubDate": "Tue, 04 Nov 2025 15:09:36 +0000",
+          "dc:creator": "Will Knight",
+          "content": "OpenAI se ha comprometido a comprar miles de millones de dólares en computación a AWS, el último de una serie de grandes acuerdos negociados por la startup de IA.",
+          "contentSnippet": "OpenAI se ha comprometido a comprar miles de millones de dólares en computación a AWS, el último de una serie de grandes acuerdos negociados por la startup de IA.",
+          "guid": "690a157caaf65ab584a8891e",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-04T15:09:36.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Gretchen Rundorff",
+          "title": "Cómo ver la lluvia de meteoritos Leónidas",
+          "link": "https://es.wired.com/articulos/como-ver-las-orionidas-las-perseidas-y-otras-lluvias-de-meteoritos-de-2025",
+          "pubDate": "Tue, 04 Nov 2025 14:56:43 +0000",
+          "dc:creator": "Gretchen Rundorff",
+          "content": "Esta lluvia de meteoros, que dura un mes, alcanza su punto máximo justo después de mediados de noviembre y es conocida por producir brillantes estrellas fugaces \"bolas de fuego\". Esto es lo que debes saber sobre las Leónidas y otras lluvias importantes que aparecerán en 2025.",
+          "contentSnippet": "Esta lluvia de meteoros, que dura un mes, alcanza su punto máximo justo después de mediados de noviembre y es conocida por producir brillantes estrellas fugaces \"bolas de fuego\". Esto es lo que debes saber sobre las Leónidas y otras lluvias importantes que aparecerán en 2025.",
+          "guid": "680f90eae4bbd469aebf8d79",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-04T14:56:43.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Ali Winston",
+          "title": "La dura condena a un anarquista anuncia la ofensiva de Trump contra lo que llama \"terrorismo doméstico\"",
+          "link": "https://es.wired.com/articulos/la-dura-condena-a-un-anarquista-anuncia-la-ofensiva-de-trump-contra-lo-que-llama-terrorismo-domestico",
+          "pubDate": "Tue, 04 Nov 2025 13:00:00 +0000",
+          "dc:creator": "Ali Winston",
+          "content": "A medida que la administración Trump intensifica sus ataques contra personas y grupos de izquierda, el procesamiento y la severa condena del activista anarquista Casey Goonan podrían ser un indicio de lo que está por venir.",
+          "contentSnippet": "A medida que la administración Trump intensifica sus ataques contra personas y grupos de izquierda, el procesamiento y la severa condena del activista anarquista Casey Goonan podrían ser un indicio de lo que está por venir.",
+          "guid": "6908fd80bb8a15b3515ba6dd",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-04T13:00:00.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Anna Lagos",
+          "title": "Guillermo del Toro en la premiere de Frankestein, en Ciudad de México: “Lo conmovedor del arte es que esté hecho por humanos para humanos”",
+          "link": "https://es.wired.com/articulos/guillermo-del-toro-en-la-premiere-de-frankestein-en-ciudad-de-mexico-lo-conmovedor-del-arte-es-que-este-hecho-por-humanos-para-humanos",
+          "pubDate": "Tue, 04 Nov 2025 06:13:59 +0000",
+          "dc:creator": "Anna Lagos",
+          "content": "Guillermo del Toro presentó Frankenstein en el Colegio de San Ildefondo, entre aplausos y el cariño de sus fans y, con orgullo, declaró: \"Hago lo que hago y como lo hago porque soy mexicano\".",
+          "contentSnippet": "Guillermo del Toro presentó Frankenstein en el Colegio de San Ildefondo, entre aplausos y el cariño de sus fans y, con orgullo, declaró: \"Hago lo que hago y como lo hago porque soy mexicano\".",
+          "guid": "69090a7a6fb006409310d0df",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-04T06:13:59.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Fernanda González",
+          "title": "La IA refuerza los sesgos de género y edad en el trabajo: pinta a las mujeres como jóvenes inexpertas",
+          "link": "https://es.wired.com/articulos/la-ia-refuerza-los-sesgos-de-genero-y-edad-en-el-trabajo-pinta-a-las-mujeres-como-jovenes-inexpertas",
+          "pubDate": "Mon, 03 Nov 2025 23:56:03 +0000",
+          "dc:creator": "Fernanda González",
+          "content": "“La tecnología no es neutral, sino que reproduce, e incluso amplifica, los estereotipos y roles de género culturales preexistentes”, advierten los expertos.",
+          "contentSnippet": "“La tecnología no es neutral, sino que reproduce, e incluso amplifica, los estereotipos y roles de género culturales preexistentes”, advierten los expertos.",
+          "guid": "6909326d161b424e69f1046b",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T23:56:03.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Jorge Garay",
+          "title": "\"Los suplementos de melatonina podrían no ser tan inofensivos\": un estudio encuentra una correlación con insuficiencia cardíaca",
+          "link": "https://es.wired.com/articulos/los-suplementos-de-melatonina-podrian-no-ser-tan-inofensivos-un-estudio-encuentra-una-correlacion-con-insuficiencia-cardiaca",
+          "pubDate": "Mon, 03 Nov 2025 22:08:56 +0000",
+          "dc:creator": "Jorge Garay",
+          "content": "Los investigadores del estudio sobre la suplementación de melatonina a largo plazo piden más investigaciones para confirmar si la correlación es o no causal.",
+          "contentSnippet": "Los investigadores del estudio sobre la suplementación de melatonina a largo plazo piden más investigaciones para confirmar si la correlación es o no causal.",
+          "guid": "690904ce50d442d787050081",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T22:08:56.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Anna Lagos",
+          "title": "Código Futuro: Robots de $20,000 en preventa y despidos masivos, bienvenidos al futuro desordenado de la IA",
+          "link": "https://es.wired.com/articulos/codigo-futuro-robots-de-dollar20000-en-preventa-y-despidos-masivos-bienvenidos-al-futuro-desordenado-de-la-ia",
+          "pubDate": "Mon, 03 Nov 2025 20:48:11 +0000",
+          "dc:creator": "Anna Lagos",
+          "content": "Mientras 1X pone en preventa su robot doméstico Neo y China busca la gobernanza global de la IA, Jerome Powell confirma la cruda verdad: la inteligencia artificial ya está reconfigurando la economía. Y Latinoamérica no está lista.",
+          "contentSnippet": "Mientras 1X pone en preventa su robot doméstico Neo y China busca la gobernanza global de la IA, Jerome Powell confirma la cruda verdad: la inteligencia artificial ya está reconfigurando la economía. Y Latinoamérica no está lista.",
+          "guid": "69090ac94c781e4efbbe89e0",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T20:48:11.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Fernanda González",
+          "title": "China desafía a EE UU al proponer una organización mundial de IA con sede en Shanghái",
+          "link": "https://es.wired.com/articulos/china-desafia-a-ee-uu-al-proponer-una-organizacion-mundial-de-ia-con-sede-en-shanghai",
+          "pubDate": "Mon, 03 Nov 2025 19:26:34 +0000",
+          "dc:creator": "Fernanda González",
+          "content": "Actualmente, China concentra el 60% del total de patentes de IA registradas a nivel mundial y posee una base de más de 500 millones usuarios de esta tecnologia.",
+          "contentSnippet": "Actualmente, China concentra el 60% del total de patentes de IA registradas a nivel mundial y posee una base de más de 500 millones usuarios de esta tecnologia.",
+          "guid": "6908f7a1161b424e69f10469",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T19:26:34.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Steven Levy",
+          "title": "Conoce al hombre que inventó el concepto \"inteligencia artificial general\"",
+          "link": "https://es.wired.com/articulos/el-hombre-que-invento-el-concepto-inteligencia-artificial-general",
+          "pubDate": "Mon, 03 Nov 2025 19:04:47 +0000",
+          "dc:creator": "Steven Levy",
+          "content": "Todo el mundo está obsesionado con la inteligencia artificial general, esa etapa en la que la IA podría igualar todas las capacidades de la cognición humana. Quien acuñó el término, en un principio, la consideró una amenaza.",
+          "contentSnippet": "Todo el mundo está obsesionado con la inteligencia artificial general, esa etapa en la que la IA podría igualar todas las capacidades de la cognición humana. Quien acuñó el término, en un principio, la consideró una amenaza.",
+          "guid": "6908debc342c03a1b9deff82",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T19:04:47.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Luca Nardi",
+          "title": "Qué es la materia oscura, y otros 9 misterios que los astrónomos no han podido resolver",
+          "link": "https://es.wired.com/galerias/que-es-la-materia-oscura-y-otros-9-misterios-que-los-astronomos-no-han-podido-resolver",
+          "pubDate": "Mon, 03 Nov 2025 19:02:16 +0000",
+          "dc:creator": "Luca Nardi",
+          "content": "Pocos campos están tan llenos de interrogantes como la astrofísica. Aquí, los principales enigmas que aún no tienen respuesta definitiva.",
+          "contentSnippet": "Pocos campos están tan llenos de interrogantes como la astrofísica. Aquí, los principales enigmas que aún no tienen respuesta definitiva.",
+          "guid": "68fbda8fbecc24e035ef5d67",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T19:02:16.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Jorge Garay",
+          "title": "La luna llena de noviembre será también la mejor superluna del año",
+          "link": "https://es.wired.com/articulos/la-luna-llena-de-noviembre-sera-tambien-la-mejor-superluna-del-ano",
+          "pubDate": "Mon, 03 Nov 2025 18:51:35 +0000",
+          "dc:creator": "Jorge Garay",
+          "content": "La luna llena de noviembre 2025 se acercará a 356,980 kilómetros de la Tierra, por lo que se convertirá en la superluna más brillante del año.",
+          "contentSnippet": "La luna llena de noviembre 2025 se acercará a 356,980 kilómetros de la Tierra, por lo que se convertirá en la superluna más brillante del año.",
+          "guid": "6908e22351a3ad160bbd97f5",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T18:51:35.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Fernanda González",
+          "title": "Gemini transforma Google Translate con modos inteligentes de traducción personalizada",
+          "link": "https://es.wired.com/articulos/gemini-transforma-google-translate-con-modos-inteligentes-de-traduccion-personalizada",
+          "pubDate": "Mon, 03 Nov 2025 17:30:03 +0000",
+          "dc:creator": "Fernanda González",
+          "content": "Esta novedad se suma a una serie de mejoras impulsadas por IA que Google Translate ha incorporado en los últimos meses.",
+          "contentSnippet": "Esta novedad se suma a una serie de mejoras impulsadas por IA que Google Translate ha incorporado en los últimos meses.",
+          "guid": "6908da8851a3ad160bbd97f4",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T17:30:03.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Reece Rogers",
+          "title": "Por qué estás dejando de ver captchas en internet",
+          "link": "https://es.wired.com/articulos/por-que-estas-dejando-de-ver-captchas-en-internet",
+          "pubDate": "Mon, 03 Nov 2025 17:27:56 +0000",
+          "dc:creator": "Reece Rogers",
+          "content": "Aunque siguen existiendo captchas desconcertantes (desde perros con sombrero hasta suspensorios deslizantes), la mayoría de los retos que disuaden a los bots han pasado a un segundo plano.",
+          "contentSnippet": "Aunque siguen existiendo captchas desconcertantes (desde perros con sombrero hasta suspensorios deslizantes), la mayoría de los retos que disuaden a los bots han pasado a un segundo plano.",
+          "guid": "6908d74c6fb006409310d0ad",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T17:27:56.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Andrea Indiano",
+          "title": "El fast fashion se está convirtiendo en recursos para comunidades del sur global",
+          "link": "https://es.wired.com/articulos/el-fast-fashion-se-esta-convirtiendo-en-recursos-para-comunidades-del-sur-global",
+          "pubDate": "Mon, 03 Nov 2025 16:53:10 +0000",
+          "dc:creator": "Andrea Indiano",
+          "content": "El desecho textil dictado por nuestra compulsividad crea oportunidades sociales y desafían la lógica del mercado. De Kenia y Sudamérica llegan historias de resiliencia y reutilización.",
+          "contentSnippet": "El desecho textil dictado por nuestra compulsividad crea oportunidades sociales y desafían la lógica del mercado. De Kenia y Sudamérica llegan historias de resiliencia y reutilización.",
+          "guid": "6908cd3251a3ad160bbd97f0",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T16:53:10.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Boone Ashworth",
+          "title": "Reseña: las Ray-Ban Meta Gen 2 son potentes, pero exageradamente llamativas",
+          "link": "https://es.wired.com/review/probe-las-ray-ban-meta-gen-2-son-muy-elegantes-pero-no-me-atrevo-a-llevarlas-en-publico",
+          "pubDate": "Mon, 03 Nov 2025 16:29:23 +0000",
+          "dc:creator": "Boone Ashworth",
+          "content": "Las nuevas gafas inteligentes sin pantalla de Meta son bastante buenas. También representan un problema para la privacidad.",
+          "contentSnippet": "Las nuevas gafas inteligentes sin pantalla de Meta son bastante buenas. También representan un problema para la privacidad.",
+          "guid": "6908cb94342c03a1b9deff81",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T16:29:23.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Gabriele Nava",
+          "title": "Así lucirá el Estadio Azteca en la inauguración de la Copa Mundial 2026",
+          "link": "https://es.wired.com/articulos/asi-lucira-el-estadio-azteca-en-la-inauguracion-de-la-copa-mundial-2026",
+          "pubDate": "Mon, 03 Nov 2025 15:48:28 +0000",
+          "dc:creator": "Gabriele Nava",
+          "content": "Estas son las instalaciones donde, el 11 de junio, se celebrará el primer partido de la Copa Mundial de Futbol 2026. Entre grúas y polvo, se redefine un pacto entre el deporte, la arquitectura y la sociedad.",
+          "contentSnippet": "Estas son las instalaciones donde, el 11 de junio, se celebrará el primer partido de la Copa Mundial de Futbol 2026. Entre grúas y polvo, se redefine un pacto entre el deporte, la arquitectura y la sociedad.",
+          "guid": "6904d4e0ae80e416a52d7ebe",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T15:48:28.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Javier Carbajal",
+          "title": "Crece la apuesta de AstraZeneca por el talento mexicano, inaugurando la expansión de su GITC en Guadalajara",
+          "link": "https://es.wired.com/articulos/crece-la-apuesta-de-astrazeneca-por-el-talento-mexicano-inaugurando-la-expansion-de-su-gitc-en-guadalajara",
+          "pubDate": "Mon, 03 Nov 2025 15:46:23 +0000",
+          "dc:creator": "Javier Carbajal",
+          "content": "AstraZeneca invirtió 600 millones de pesos para ampliar su GITC en Guadalajara, el cual ya suma 1,116 empleados y 16,970 metros cuadrados. Desde Jalisco, la biofarmacéutica impulsa proyectos en IA, nube y analítica de datos para todo el mundo.",
+          "contentSnippet": "AstraZeneca invirtió 600 millones de pesos para ampliar su GITC en Guadalajara, el cual ya suma 1,116 empleados y 16,970 metros cuadrados. Desde Jalisco, la biofarmacéutica impulsa proyectos en IA, nube y analítica de datos para todo el mundo.",
+          "guid": "68fa5cbdcd051f4ac5340348",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T15:46:23.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Rhett Allain",
+          "title": "Irónicamente, para acelerar en órbita debes reducir la velocidad",
+          "link": "https://es.wired.com/articulos/ironicamente-para-acelerar-en-orbita-debes-reducir-la-velocidad",
+          "pubDate": "Mon, 03 Nov 2025 15:37:25 +0000",
+          "dc:creator": "Rhett Allain",
+          "content": "Conducir una nave espacial alrededor de un planeta no se parece en nada a conducir en un planeta. Un físico explica la navegación orbital.",
+          "contentSnippet": "Conducir una nave espacial alrededor de un planeta no se parece en nada a conducir en un planeta. Un físico explica la navegación orbital.",
+          "guid": "68fbda58a8b1c9023932d6a3",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T15:37:25.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Sandro Iannaccone",
+          "title": "Traducir el universo en música: Qué es la sonificación de datos astronómicos",
+          "link": "https://es.wired.com/articulos/traducir-el-universo-en-musica-que-es-la-sonificacion-de-datos-astronomicos",
+          "pubDate": "Mon, 03 Nov 2025 15:34:23 +0000",
+          "dc:creator": "Sandro Iannaccone",
+          "content": "Las \"sonificaciones\" de datos astronómicos transforman ondas gravitacionales y otras señales cósmicas en sonidos audibles. De este modo, podemos \"escuchar\" el espacio profundo.",
+          "contentSnippet": "Las \"sonificaciones\" de datos astronómicos transforman ondas gravitacionales y otras señales cósmicas en sonidos audibles. De este modo, podemos \"escuchar\" el espacio profundo.",
+          "guid": "6908bd15342c03a1b9deff80",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T15:34:23.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "John Semley",
+          "title": "Elon Musk y MAGA no entienden El Señor de los Anillos",
+          "link": "https://es.wired.com/articulos/elon-musk-y-maga-no-entienden-el-senor-de-los-anillos",
+          "pubDate": "Mon, 03 Nov 2025 13:00:00 +0000",
+          "dc:creator": "John Semley",
+          "content": "Musk ha utilizado recientemente referencias a Tolkien para impulsar mensajes antiinmigración, al igual que el Departamento de Seguridad Nacional. Lo tienen todo al revés.",
+          "contentSnippet": "Musk ha utilizado recientemente referencias a Tolkien para impulsar mensajes antiinmigración, al igual que el Departamento de Seguridad Nacional. Lo tienen todo al revés.",
+          "guid": "6905124dc30633bcc4fe1ada",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-03T13:00:00.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Javier Carbajal",
+          "title": "Para combatir su pésima calidad de aire, la India está probando con el bombardeo de nubes",
+          "link": "https://es.wired.com/articulos/para-combatir-su-pesima-calidad-de-aire-la-india-esta-probando-con-el-bombardeo-de-nubes",
+          "pubDate": "Sun, 02 Nov 2025 23:28:15 +0000",
+          "dc:creator": "Javier Carbajal",
+          "content": "Activistas ambientales y científicos cuestionaron la eficacia del bombardeo de nubes con yoduro de plata como método para reducir la contaminación atmosférica en Nueva Delhi, la ciudad capital más contaminada del mundo.",
+          "contentSnippet": "Activistas ambientales y científicos cuestionaron la eficacia del bombardeo de nubes con yoduro de plata como método para reducir la contaminación atmosférica en Nueva Delhi, la ciudad capital más contaminada del mundo.",
+          "guid": "6907b78e0088388d76d03316",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-02T23:28:15.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Javier Carbajal",
+          "title": "Nueva imagen expansiva de la Vía Láctea te permite explorar nuestra galaxia como nunca antes",
+          "link": "https://es.wired.com/articulos/nueva-imagen-expansiva-de-la-via-lactea-te-permite-explorar-nuestra-galaxia-como-nunca-antes",
+          "pubDate": "Sun, 02 Nov 2025 19:15:07 +0000",
+          "dc:creator": "Javier Carbajal",
+          "content": "Un vistazo inédito a la Vía Láctea: astrónomos revelan la imagen de radio de baja frecuencia más detallada hasta ahora del plano galáctico. Ahora es más fácil distinguir entre supernovas y nuevas formaciones estelares.",
+          "contentSnippet": "Un vistazo inédito a la Vía Láctea: astrónomos revelan la imagen de radio de baja frecuencia más detallada hasta ahora del plano galáctico. Ahora es más fácil distinguir entre supernovas y nuevas formaciones estelares.",
+          "guid": "69078e880088388d76d03315",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-02T19:15:07.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Jorge Garay",
+          "title": "Termina el gran debate sobre los tiranosaurios: existió el Nanotyrannus y compitió contra el T. Rex",
+          "link": "https://es.wired.com/articulos/termina-el-gran-debate-sobre-los-tiranosaurios-existio-el-nanotyrannus-y-compitio-contra-el-t-rex",
+          "pubDate": "Sun, 02 Nov 2025 15:15:26 +0000",
+          "dc:creator": "Jorge Garay",
+          "content": "Un esqueleto completo resuelve décadas de debate: Nanotyrannus existió junto al T. rex, ampliando la visión de la biodiversidad prehistórica.",
+          "contentSnippet": "Un esqueleto completo resuelve décadas de debate: Nanotyrannus existió junto al T. rex, ampliando la visión de la biodiversidad prehistórica.",
+          "guid": "6904fb1633b57948825c00c1",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-02T15:15:26.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Boone Ashworth",
+          "title": "El robot peludo con IA de Casio se ganó un lugar en mi corazón",
+          "link": "https://es.wired.com/articulos/el-robot-peludo-con-ia-de-casio-se-gano-un-lugar-en-mi-corazon",
+          "pubDate": "Sun, 02 Nov 2025 12:00:00 +0000",
+          "dc:creator": "Boone Ashworth",
+          "content": "El Casio Moflin, de 430 dólares, es un robot sin sentido pero adorable que no puedes dejar de querer. A menos que seas un perro.",
+          "contentSnippet": "El Casio Moflin, de 430 dólares, es un robot sin sentido pero adorable que no puedes dejar de querer. A menos que seas un perro.",
+          "guid": "69056ccedf44219f63733f9b",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-02T12:00:00.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Oscar Adame Galeano",
+          "title": "IC3PEAK: La banda “terrorista” que hackeó la censura de Putin",
+          "link": "https://es.wired.com/articulos/entrevista-con-ic3peak-la-banda-que-hackeo-la-censura-de-putin",
+          "pubDate": "Sat, 01 Nov 2025 15:49:20 +0000",
+          "dc:creator": "Oscar Adame Galeano",
+          "content": "Esta es la historia de cómo una banda se volvió símbolo del choque entre el Kremlin y la primera generación rusa con una conciencia política anclada en lo digital.",
+          "contentSnippet": "Esta es la historia de cómo una banda se volvió símbolo del choque entre el Kremlin y la primera generación rusa con una conciencia política anclada en lo digital.",
+          "guid": "6903eac36a07cb08f2ce3482",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-01T15:49:20.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Anthony Lydgate",
+          "title": "Si tu ex y tú se odian pero deben hablar, esta app de IA es para ustedes",
+          "link": "https://es.wired.com/articulos/si-tu-ex-y-tu-se-odian-pero-deben-hablar-esta-app-de-ia-es-para-ustedes",
+          "pubDate": "Sat, 01 Nov 2025 15:00:00 +0000",
+          "dc:creator": "Anthony Lydgate",
+          "content": "No quería poner a sus hijos en medio, así que colocó una máquina en su lugar.",
+          "contentSnippet": "No quería poner a sus hijos en medio, así que colocó una máquina en su lugar.",
+          "guid": "690526a07417563aacc61aa1",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-01T15:00:00.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Paul Ford",
+          "title": "A todos nos conviene que la burbuja de la IA estalle de una vez",
+          "link": "https://es.wired.com/articulos/a-todos-nos-conviene-que-la-burbuja-de-la-ia-estalle-de-una-vez",
+          "pubDate": "Sat, 01 Nov 2025 14:00:00 +0000",
+          "dc:creator": "Paul Ford",
+          "content": "Cuando explote la burbuja de la IA, los nerds harán su mejor trabajo.",
+          "contentSnippet": "Cuando explote la burbuja de la IA, los nerds harán su mejor trabajo.",
+          "guid": "6902a08f682c4ccf29c7922a",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-01T14:00:00.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Mara Magistroni",
+          "title": "El veneno de las serpientes es diferente según su entorno y su presa",
+          "link": "https://es.wired.com/articulos/el-veneno-de-las-serpientes-es-diferente-segun-su-entorno-y-su-presa",
+          "pubDate": "Sat, 01 Nov 2025 13:00:00 +0000",
+          "dc:creator": "Mara Magistroni",
+          "content": "En el estudio se utilizó tecnología avanzada para captar el instante en que los vipéridos, elápidos y colúbridos clavan sus dientes en sus presas.",
+          "contentSnippet": "En el estudio se utilizó tecnología avanzada para captar el instante en que los vipéridos, elápidos y colúbridos clavan sus dientes en sus presas.",
+          "guid": "6902a01b9edce5b713e3437d",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-11-01T13:00:00.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Sandra Upson",
+          "title": "Cómo fundar una startup de IA en tiempos de caos",
+          "link": "https://es.wired.com/articulos/como-fundar-una-startup-de-ia-en-tiempos-de-caos",
+          "pubDate": "Fri, 31 Oct 2025 20:59:34 +0000",
+          "dc:creator": "Sandra Upson",
+          "content": "Miles de empresarios están intentando reconstruir la economía en torno a la IA. Me propuse ver cómo lo están haciendo.",
+          "contentSnippet": "Miles de empresarios están intentando reconstruir la economía en torno a la IA. Me propuse ver cómo lo están haciendo.",
+          "guid": "69038553ef14eaf5ecd9216d",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-10-31T20:59:34.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Anna Lagos",
+          "title": "Latinoamérica enfrenta una crisis: la IA transforma el trabajo pero existe una aguda escasez de talento",
+          "link": "https://es.wired.com/articulos/latinoamerica-enfrenta-una-crisis-la-ia-transforma-el-trabajo-pero-existe-una-aguda-escasez-de-talento",
+          "pubDate": "Fri, 31 Oct 2025 19:52:08 +0000",
+          "dc:creator": "Anna Lagos",
+          "content": "El nuevo reporte \"Impact of AI 2025\" de Get on Board revela que el mercado laboral tecnológico en la región no se está contrayendo, sino mutando a gran velocidad. Mientras México lidera la adopción en startups, Argentina destaca en paridad de género y Perú enfrenta una brecha crítica. El verdadero desafío: el reskilling.",
+          "contentSnippet": "El nuevo reporte \"Impact of AI 2025\" de Get on Board revela que el mercado laboral tecnológico en la región no se está contrayendo, sino mutando a gran velocidad. Mientras México lidera la adopción en startups, Argentina destaca en paridad de género y Perú enfrenta una brecha crítica. El verdadero desafío: el reskilling.",
+          "guid": "69050ec1418cf070b834bdcf",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-10-31T19:52:08.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Riccardo Piccolo",
+          "title": "Pese a la tregua, continúan los ataques israelíes en Gaza",
+          "link": "https://es.wired.com/articulos/pese-a-la-tregua-continuan-los-ataques-israelies-en-gaza",
+          "pubDate": "Fri, 31 Oct 2025 19:29:08 +0000",
+          "dc:creator": "Riccardo Piccolo",
+          "content": "Desde el 10 de octubre, Israel ha violado el alto al fuego al menos 125 veces, matando a unos 200 palestinos en 20 días. Para los trabajadores humanitarios, la matanza no ha cesado ni un solo día.",
+          "contentSnippet": "Desde el 10 de octubre, Israel ha violado el alto al fuego al menos 125 veces, matando a unos 200 palestinos en 20 días. Para los trabajadores humanitarios, la matanza no ha cesado ni un solo día.",
+          "guid": "6904ef1022ef52330feb0809",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-10-31T19:29:08.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Emily Mullin",
+          "title": "La empresa que va por el negocio de la edición genética de embriones",
+          "link": "https://es.wired.com/articulos/la-empresa-que-va-por-el-negocio-de-la-edicion-genetica-de-embriones",
+          "pubDate": "Fri, 31 Oct 2025 19:16:15 +0000",
+          "dc:creator": "Emily Mullin",
+          "content": "Siete años después de que se dieran a conocer los primeros bebés editados genéticamente, la empresa biotecnológica Manhattan Genomics recupera la idea de editar embriones humanos para crear niños libres de enfermedades.",
+          "contentSnippet": "Siete años después de que se dieran a conocer los primeros bebés editados genéticamente, la empresa biotecnológica Manhattan Genomics recupera la idea de editar embriones humanos para crear niños libres de enfermedades.",
+          "guid": "6904e3d95ef67e16c013e287",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-10-31T19:16:15.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Anna Lagos",
+          "title": "COP30: En la crisis climática, el enemigo invisible es la desinformación",
+          "link": "https://es.wired.com/articulos/cop30-la-crisis-climatica-enfrenta-un-enemigo-invisible-la-desinformacion",
+          "pubDate": "Fri, 31 Oct 2025 19:15:02 +0000",
+          "dc:creator": "Anna Lagos",
+          "content": "La cobertura de la cumbre en el Amazonas se enfrenta a la desinformación, la falta de fondos y los \"tecnicismos diplomáticos\". La respuesta de los expertos: IA para verificar y redes de periodismo colaborativo.",
+          "contentSnippet": "La cobertura de la cumbre en el Amazonas se enfrenta a la desinformación, la falta de fondos y los \"tecnicismos diplomáticos\". La respuesta de los expertos: IA para verificar y redes de periodismo colaborativo.",
+          "guid": "690508d54a20f36e92d2590e",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-10-31T19:15:02.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Anna Lagos",
+          "title": "Jerome Powell advierte sobre el impacto de la IA en el mercado laboral: “La creación de empleo está cerca de cero”",
+          "link": "https://es.wired.com/articulos/jerome-powell-advierte-sobre-el-impacto-de-la-ia-en-el-mercado-laboral-la-creacion-de-empleo-esta-cerca-de-cero",
+          "pubDate": "Fri, 31 Oct 2025 17:46:39 +0000",
+          "dc:creator": "Anna Lagos",
+          "content": "El presidente de la Reserva Federal alerta que la inteligencia artificial permite a las empresas \"hacer más con menos gente\", planteando un complejo dilema de política económica. Mientras la inversión tecnológica se dispara, el mercado laboral atraviesa lo que algunos expertos denominan una \"Gran Congelación\".",
+          "contentSnippet": "El presidente de la Reserva Federal alerta que la inteligencia artificial permite a las empresas \"hacer más con menos gente\", planteando un complejo dilema de política económica. Mientras la inversión tecnológica se dispara, el mercado laboral atraviesa lo que algunos expertos denominan una \"Gran Congelación\".",
+          "guid": "6904e3f3418cf070b834bdc9",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-10-31T17:46:39.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Jay Bennett",
+          "title": "El avión supersónico silencioso X-59 de la NASA surca el cielo por primera vez",
+          "link": "https://es.wired.com/articulos/el-avion-supersonico-silencioso-x-59-de-la-nasa-surca-el-cielo-por-primera-vez",
+          "pubDate": "Fri, 31 Oct 2025 17:15:31 +0000",
+          "dc:creator": "Jay Bennett",
+          "content": "El X-59 completó con éxito su vuelo inaugural, un paso hacia el desarrollo de reactores supersónicos más silenciosos que algún día podrían hacer volar a los clientes a más del doble de velocidad que los aviones comerciales.",
+          "contentSnippet": "El X-59 completó con éxito su vuelo inaugural, un paso hacia el desarrollo de reactores supersónicos más silenciosos que algún día podrían hacer volar a los clientes a más del doble de velocidad que los aviones comerciales.",
+          "guid": "6903d7ecfb98b35c5e4fccaf",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-10-31T17:15:31.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Angela Watercutter",
+          "title": "Guillermo del Toro: \"Los verdaderos doctores Frankenstein son los políticos tiranos y los tech bros de Silicon Valley”",
+          "link": "https://es.wired.com/articulos/guillermo-del-toro-los-verdaderos-doctores-frankenstein-son-los-politicos-tiranos-y-los-tech-bros-de-silicon-valley",
+          "pubDate": "Fri, 31 Oct 2025 16:36:18 +0000",
+          "dc:creator": "Angela Watercutter",
+          "content": "WIRED conversó con el director de cine sobre políticos tiránicos y el fatídico verano de 1816 durante el cual Mary Shelley se inspiró para escribir el libro que tanto atesora.",
+          "contentSnippet": "WIRED conversó con el director de cine sobre políticos tiránicos y el fatídico verano de 1816 durante el cual Mary Shelley se inspiró para escribir el libro que tanto atesora.",
+          "guid": "6904c99b418cf070b834bdc8",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-10-31T16:36:18.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Alondra Flores",
+          "title": "Leyendas Legendarias: \"El futuro de la raza humana no es de carne y hueso; es de silicio y microchips\"",
+          "link": "https://es.wired.com/articulos/leyendas-legendarias-el-futuro-de-la-raza-humana-no-es-de-carne-y-hueso-es-de-silicio-y-microchips",
+          "pubDate": "Fri, 31 Oct 2025 15:00:00 +0000",
+          "dc:creator": "Alondra Flores",
+          "content": "Badía, Lolo y Borre conversan en el WIRED Summit 2025 sobre sus proyectos legendarios, cómo enfrentar los desafíos de la era digital y el arriesgado mundo de la narrativa experimental que combina comedia y misterio.",
+          "contentSnippet": "Badía, Lolo y Borre conversan en el WIRED Summit 2025 sobre sus proyectos legendarios, cómo enfrentar los desafíos de la era digital y el arriesgado mundo de la narrativa experimental que combina comedia y misterio.",
+          "guid": "68d0dc60fd91aa7549ec6f8e",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-10-31T15:00:00.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Jorge Garay",
+          "title": "Probamos el realme 15 Pro Game of Thrones Limited Edition: ojalá llegaran más teléfonos así",
+          "link": "https://es.wired.com/review/probamos-el-realme-15-pro-game-of-thrones-limited-edition-ojala-llegaran-mas-telefonos-asi",
+          "pubDate": "Thu, 30 Oct 2025 23:22:55 +0000",
+          "dc:creator": "Jorge Garay",
+          "content": "Realme vuelve a sus codiciadas ediciones especiales con uno de sus mejores teléfonos del año bajo una capa de fuego y hielo.",
+          "contentSnippet": "Realme vuelve a sus codiciadas ediciones especiales con uno de sus mejores teléfonos del año bajo una capa de fuego y hielo.",
+          "guid": "6902e1dad67455ebc26949c2",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-10-30T23:22:55.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Jorge Garay",
+          "title": "Qué pasará cuando el cometa 3I/Atlas alcance su punto más cercano a la Tierra",
+          "link": "https://es.wired.com/articulos/que-pasara-cuando-el-cometa-3i-atlas-alcance-su-punto-mas-cercano-a-la-tierra",
+          "pubDate": "Thu, 30 Oct 2025 20:57:54 +0000",
+          "dc:creator": "Jorge Garay",
+          "content": "Seguiremos escuchando de 3I/Atlas durante lo que resta del año, sobre todo en diciembre, cuando el cometa alcance su punto más cercano a nuestro planeta.",
+          "contentSnippet": "Seguiremos escuchando de 3I/Atlas durante lo que resta del año, sobre todo en diciembre, cuando el cometa alcance su punto más cercano a nuestro planeta.",
+          "guid": "6903a6cd5085e009efcc6379",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-10-30T20:57:54.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Dell Cameron",
+          "title": "El ICE quiere “industrializar” las deportaciones con contratistas privados y armados",
+          "link": "https://es.wired.com/articulos/el-ice-quiere-industrializar-las-deportaciones-con-contratistas-privados-y-armados",
+          "pubDate": "Thu, 30 Oct 2025 19:52:08 +0000",
+          "dc:creator": "Dell Cameron",
+          "content": "Una nueva propuesta del ICE esboza una operación de transporte 24/7 dirigida por contratistas armados, convirtiendo a Texas en la columna vertebral logística de una máquina de deportación industrializada.",
+          "contentSnippet": "Una nueva propuesta del ICE esboza una operación de transporte 24/7 dirigida por contratistas armados, convirtiendo a Texas en la columna vertebral logística de una máquina de deportación industrializada.",
+          "guid": "6903b8bb8e8f883158383e5c",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-10-30T19:52:08.000Z"
+        }
+      },
+      {
+        "json": {
+          "creator": "Fernanda González",
+          "title": "Privacidad, refrescos y videojuegos: cómo te afectan las reformas del Paquete Económico 2026",
+          "link": "https://es.wired.com/articulos/privacidad-refrescos-y-videojuegos-como-te-afectan-las-reformas-del-paquete-economico-2026",
+          "pubDate": "Thu, 30 Oct 2025 19:30:11 +0000",
+          "dc:creator": "Fernanda González",
+          "content": "Diversos especialistas señalan que las disposiciones incluidas en estas reformas legislativas afectarán la economía de los mexicanos y, en algunas casos, representan una amenaza para la privacidad, entre otros derechos universales.",
+          "contentSnippet": "Diversos especialistas señalan que las disposiciones incluidas en estas reformas legislativas afectarán la economía de los mexicanos y, en algunas casos, representan una amenaza para la privacidad, entre otros derechos universales.",
+          "guid": "6903a9070829755c516bc45c",
+          "categories": [
+            ""
+          ],
+          "isoDate": "2025-10-30T19:30:11.000Z"
+        }
+      }
+    ]
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-11-04T18:58:35.191Z",
+      "updatedAt": "2025-11-04T18:58:35.191Z",
+      "role": "workflow:owner",
+      "workflowId": "CtTEWLJgKimVZVia",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-11-02T18:30:25.985Z",
+      "updatedAt": "2025-11-02T18:30:25.985Z",
+      "id": "0LCSIfnWV1L0KZSe",
+      "name": "udia"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-05T09:23:55.000Z",
+  "versionId": "0a760dad-5739-48d0-82eb-423f70777268"
+}
