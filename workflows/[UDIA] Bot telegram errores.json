@@ -1,0 +1,109 @@
+{
+  "active": false,
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-04T18:07:42.044Z",
+  "id": "ourVSlWtLUjBBuYc",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[UDIA] Bot telegram errores",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3a523362-1a3f-4802-8df9-c6c8063ad553",
+      "name": "Telegram Trigger",
+      "webhookId": "30afdff0-03e0-470e-9c4e-8db862c2e069",
+      "credentials": {
+        "telegramApi": {
+          "id": "L4gQSEkpsNL6Pjk5",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $json.message.chat.id }}",
+        "text": "={{ $json.message.text }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "8b3032be-d16d-41f1-b632-42455e0ebf80",
+      "name": "Send a text message",
+      "webhookId": "19ff79c3-d1b4-40f3-bd8d-a4c3126eead5",
+      "credentials": {
+        "telegramApi": {
+          "id": "L4gQSEkpsNL6Pjk5",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-11-04T18:07:42.050Z",
+      "updatedAt": "2025-11-04T18:07:42.050Z",
+      "role": "workflow:owner",
+      "workflowId": "ourVSlWtLUjBBuYc",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-11-02T18:30:25.985Z",
+      "updatedAt": "2025-11-02T18:30:25.985Z",
+      "id": "0LCSIfnWV1L0KZSe",
+      "name": "udia"
+    },
+    {
+      "createdAt": "2025-11-04T18:07:48.343Z",
+      "updatedAt": "2025-11-04T18:07:48.343Z",
+      "id": "374WMaCZADz9xo4S",
+      "name": "errores"
+    },
+    {
+      "createdAt": "2025-11-04T18:07:51.280Z",
+      "updatedAt": "2025-11-04T18:07:51.280Z",
+      "id": "YRmk1FKF1yjQbu5R",
+      "name": "telegram"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-05T11:12:30.000Z",
+  "versionId": "73904376-8a66-4291-a1be-a79ea50fe00f"
+}
