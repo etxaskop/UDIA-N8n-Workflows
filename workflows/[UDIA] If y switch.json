@@ -1,0 +1,289 @@
+{
+  "active": false,
+  "connections": {
+    "When chat message received": {
+      "main": [
+        []
+      ]
+    },
+    "If": {
+      "main": [
+        []
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-04T18:20:34.629Z",
+  "id": "nB8GgMpDkC5EMDcn",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[UDIA] If y switch",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        -320,
+        -112
+      ],
+      "id": "5dfd1a7c-9dec-4ca4-bcc7-63dd6796ad85",
+      "name": "When chat message received",
+      "webhookId": "ae7e311c-9aab-4470-ad1d-3c6249541caa"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "377db15f-b9bf-4571-85d1-329d939530aa",
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "Hd",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            },
+            {
+              "id": "b73a68f7-7ccc-4f2d-bc8f-019e93985008",
+              "leftValue": "={{ $json.chatInput }}",
+              "rightValue": "Ho",
+              "operator": {
+                "type": "string",
+                "operation": "startsWith"
+              }
+            },
+            {
+              "id": "3e42490b-fa1e-424e-9202-c5738852e035",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        -144
+      ],
+      "id": "fbfcb527-32e8-4d3a-b599-919ac389d443",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "Hola",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "b9ee4fc2-7d86-42f7-aa83-8c691d2071bd"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Saludo"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7b67e87e-57e0-4191-97e0-258df32c855d",
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "Adios",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Despedida"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        240,
+        64
+      ],
+      "id": "9162983e-733d-42af-841d-f6f8666ec618",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "chatId": "7991924255",
+        "text": "¡Hola, como estas!",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        592,
+        -64
+      ],
+      "id": "c566cc2a-ca10-44b5-a7f4-30a62d65255b",
+      "name": "Send a text message",
+      "webhookId": "31adad19-e03f-453b-b3b9-7c37fac6cb5f",
+      "credentials": {
+        "telegramApi": {
+          "id": "L4gQSEkpsNL6Pjk5",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "7991924255",
+        "text": "¡Hasta luego!",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        608,
+        80
+      ],
+      "id": "8d464e7f-0858-45c6-b121-f5ac97608a27",
+      "name": "Send a text message1",
+      "webhookId": "31adad19-e03f-453b-b3b9-7c37fac6cb5f",
+      "credentials": {
+        "telegramApi": {
+          "id": "L4gQSEkpsNL6Pjk5",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -48,
+        16
+      ],
+      "id": "71b569f2-53c4-4967-b69b-14b0a10635ac",
+      "name": "Telegram Trigger",
+      "webhookId": "3f240204-cbce-4122-ba96-11076362de55",
+      "credentials": {
+        "telegramApi": {
+          "id": "L4gQSEkpsNL6Pjk5",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-11-04T18:20:34.633Z",
+      "updatedAt": "2025-11-04T18:20:34.633Z",
+      "role": "workflow:owner",
+      "workflowId": "nB8GgMpDkC5EMDcn",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-11-02T18:30:25.985Z",
+      "updatedAt": "2025-11-02T18:30:25.985Z",
+      "id": "0LCSIfnWV1L0KZSe",
+      "name": "udia"
+    },
+    {
+      "createdAt": "2025-11-04T18:07:51.280Z",
+      "updatedAt": "2025-11-04T18:07:51.280Z",
+      "id": "YRmk1FKF1yjQbu5R",
+      "name": "telegram"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-05T11:27:18.000Z",
+  "versionId": "523e1225-77aa-49c9-8184-29773471ce9f"
+}
