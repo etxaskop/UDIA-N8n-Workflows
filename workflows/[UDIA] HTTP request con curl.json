@@ -1,0 +1,147 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "variables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "variables": {
+      "main": [
+        [
+          {
+            "node": "exersises",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-04T17:49:36.933Z",
+  "id": "uaa86HETASS5VZwt",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] HTTP request con curl",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -240,
+        0
+      ],
+      "id": "7a80d7fe-cb5e-4412-aed7-2db8015c516a",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.url }}/exercises",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "limit",
+              "value": "={{ $json.limit }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-rapidapi-host",
+              "value": "exercisedb.p.rapidapi.com"
+            },
+            {
+              "name": "x-rapidapi-key",
+              "value": "={{ $json.apikey }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "cc16fea2-ed58-4cc5-af09-32305ff69ae7",
+      "name": "exersises"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "21bcaef2-b839-4849-88f6-1c3c30f60cf5",
+              "name": "url",
+              "value": "https://exercisedb.p.rapidapi.com",
+              "type": "string"
+            },
+            {
+              "id": "01d8a009-eaff-41e5-969d-5bdbed746261",
+              "name": "limit",
+              "value": 2,
+              "type": "number"
+            },
+            {
+              "id": "0a1a62c9-8700-4faf-9141-1c062a5e87ce",
+              "name": "apikey",
+              "value": "ae13d639cfmsh8c77ab505385df5p1f9e12jsn2f64ba9f51cc",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -32,
+        0
+      ],
+      "id": "a48b28ef-26f9-4700-822d-58bf02154361",
+      "name": "variables"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-11-04T17:49:36.939Z",
+      "updatedAt": "2025-11-04T17:49:36.939Z",
+      "role": "workflow:owner",
+      "workflowId": "uaa86HETASS5VZwt",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-11-02T18:30:25.985Z",
+      "updatedAt": "2025-11-02T18:30:25.985Z",
+      "id": "0LCSIfnWV1L0KZSe",
+      "name": "udia"
+    },
+    {
+      "createdAt": "2025-11-04T18:58:05.145Z",
+      "updatedAt": "2025-11-04T18:58:05.145Z",
+      "id": "Mw0vMsSH7FOwJ63S",
+      "name": "http"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-04T18:58:08.000Z",
+  "versionId": "d829a151-f84f-4ba7-80bf-96f205ca6e6a"
+}
