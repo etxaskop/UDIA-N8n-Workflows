@@ -462,7 +462,10 @@
   ],
   "pinData": {},
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
   },
   "shared": [
     {
@@ -474,8 +477,15 @@
     }
   ],
   "staticData": null,
-  "tags": [],
+  "tags": [
+    {
+      "createdAt": "2025-11-02T18:30:25.985Z",
+      "updatedAt": "2025-11-02T18:30:25.985Z",
+      "id": "0LCSIfnWV1L0KZSe",
+      "name": "udia"
+    }
+  ],
   "triggerCount": 1,
-  "updatedAt": "2025-11-13T12:23:40.000Z",
-  "versionId": "0151e69b-6edc-410d-bffe-2b393075be85"
+  "updatedAt": "2025-11-13T12:26:20.000Z",
+  "versionId": "5ab0da85-d3b8-44f2-a9b7-c245f9b81352"
 }
