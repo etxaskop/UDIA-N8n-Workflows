@@ -1,0 +1,44 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-11-02T18:30:15.125Z",
+  "id": "DGgYXrT38xymmvSu",
+  "isArchived": false,
+  "meta": null,
+  "name": "Udia Workflow de prueba",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "createdAt": "2025-11-02T18:30:15.136Z",
+      "updatedAt": "2025-11-02T18:30:15.136Z",
+      "role": "workflow:owner",
+      "workflowId": "DGgYXrT38xymmvSu",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-11-02T18:30:25.985Z",
+      "updatedAt": "2025-11-02T18:30:25.985Z",
+      "id": "0LCSIfnWV1L0KZSe",
+      "name": "udia"
+    },
+    {
+      "createdAt": "2025-11-02T18:30:49.095Z",
+      "updatedAt": "2025-11-02T18:30:49.095Z",
+      "id": "esuIkqwB5L7ZMpIY",
+      "name": "desarroyo"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-02T18:37:37.000Z",
+  "versionId": "0ff2e43d-e8ee-41ff-9502-e97747b5b5a3"
+}
