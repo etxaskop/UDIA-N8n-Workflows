@@ -1,0 +1,152 @@
+{
+  "active": false,
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-02T18:59:52.734Z",
+  "id": "6SylV7paxOF0L93p",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[UDIA] primr flujo sencillo",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Newslwtter n8n udia",
+        "formDescription": "Las últimas noticias de n8n en tu email",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "nombre",
+              "placeholder": "aquí tu numbre",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Email",
+              "placeholder": "aquí tu email",
+              "requiredField": true
+            },
+            {
+              "fieldType": "html",
+              "html": "<input\n      type=\"checkbox\"\n      id=\"acepto-privacidad\"\n      name=\"acepto_privacidad\"\n      required\n    >\n He leído y acepto la\n      <a href=\"/politica-de-privacidad\" target=\"_blank\" rel=\"noopener\">\n        Política de Privacidad\n      </a>\n\n\n"
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "0586f4cd-261c-49d4-bba3-4142a8071093",
+      "name": "On form submission",
+      "webhookId": "4926e2eb-fdd0-49a2-902b-568f101e3966"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1sTQ44CKBk-CLSUsPCeBXz22KX6JIBYQSfxuFMjCx754/edit?gid=0#gid=0",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Hoja 1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1sTQ44CKBk-CLSUsPCeBXz22KX6JIBYQSfxuFMjCx754/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "email": "={{ $json.Email }}",
+            "Nombre": "={{ $json.nombre }}"
+          },
+          "matchingColumns": [
+            "email"
+          ],
+          "schema": [
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "2032997e-0b5a-4dc8-a47d-735d1cb660ff",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "3krXJSCYRnCelQzf",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-11-02T18:59:52.741Z",
+      "updatedAt": "2025-11-02T18:59:52.741Z",
+      "role": "workflow:owner",
+      "workflowId": "6SylV7paxOF0L93p",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-11-02T18:30:25.985Z",
+      "updatedAt": "2025-11-02T18:30:25.985Z",
+      "id": "0LCSIfnWV1L0KZSe",
+      "name": "udia"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-04T18:58:19.000Z",
+  "versionId": "80bbc2c3-9396-484d-a7f0-23057b8a67fc"
+}
