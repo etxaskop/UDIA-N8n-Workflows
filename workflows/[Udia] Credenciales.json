@@ -1,0 +1,124 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get many bases",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-04T18:43:45.038Z",
+  "id": "gw9SZ4El3ARf6poq",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[Udia] Credenciales",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a8deae93-fafe-47c0-8d3d-574d0a10b42b",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "resource": "base",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        224,
+        -144
+      ],
+      "id": "3f12a268-a19f-4e9a-a5e3-addb8b1b5440",
+      "name": "Get many bases",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "Wx96x9xHM2vwEwek",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "Hola, saluda a mis compañeros de Udia.es"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        192,
+        80
+      ],
+      "id": "d1ba2860-4924-4720-ab3a-04272b136bfc",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "LOlbps8rbIEAqCO2",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-11-04T18:43:45.044Z",
+      "updatedAt": "2025-11-04T18:43:45.044Z",
+      "role": "workflow:owner",
+      "workflowId": "gw9SZ4El3ARf6poq",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-11-02T18:30:25.985Z",
+      "updatedAt": "2025-11-02T18:30:25.985Z",
+      "id": "0LCSIfnWV1L0KZSe",
+      "name": "udia"
+    },
+    {
+      "createdAt": "2025-11-04T18:57:36.481Z",
+      "updatedAt": "2025-11-04T18:57:36.481Z",
+      "id": "Xrqlm7xFZ0AkNF84",
+      "name": "credenciales"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-04T18:57:41.000Z",
+  "versionId": "824f6a60-3a64-490e-810d-89d250fcaeae"
+}
