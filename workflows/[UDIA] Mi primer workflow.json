@@ -1,0 +1,269 @@
+{
+  "active": false,
+  "connections": {
+    "Variables iniciales": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        []
+      ]
+    },
+    "Variables iniciales1": {
+      "main": [
+        [
+          {
+            "node": "Variables iniciales2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Variables iniciales1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Variables iniciales",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-02T18:40:43.785Z",
+  "id": "tD5atGz2y5QI5vPA",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] Mi primer workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8554fd7d-678e-486c-b497-2a5fa918dd55",
+              "name": "language",
+              "value": "spanish",
+              "type": "string"
+            },
+            {
+              "id": "5cda4e8c-81c3-4059-9270-bda508479af3",
+              "name": "type",
+              "value": "article",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        -112
+      ],
+      "id": "a80709c5-1e39-401a-84c1-800c63c4d39a",
+      "name": "Variables iniciales"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "94e08751-16e7-421c-8470-9688880fdad4",
+              "leftValue": "",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        464,
+        96
+      ],
+      "id": "54e36929-6bda-4633-983f-5159af12ee15",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8554fd7d-678e-486c-b497-2a5fa918dd55",
+              "name": "language",
+              "value": "spanish",
+              "type": "string"
+            },
+            {
+              "id": "5cda4e8c-81c3-4059-9270-bda508479af3",
+              "name": "type",
+              "value": "article",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        672,
+        -112
+      ],
+      "id": "07db20bc-6a06-44f3-9f9b-62edf8afb8dc",
+      "name": "Variables iniciales1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8554fd7d-678e-486c-b497-2a5fa918dd55",
+              "name": "language",
+              "value": "spanish",
+              "type": "string"
+            },
+            {
+              "id": "5cda4e8c-81c3-4059-9270-bda508479af3",
+              "name": "type",
+              "value": "article",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        912,
+        -112
+      ],
+      "id": "e75025f5-3945-47eb-9fea-34f6e904d4ea",
+      "name": "Variables iniciales2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        464,
+        -112
+      ],
+      "id": "05a8c0c7-2e23-40dc-872c-af30a2f1808a",
+      "name": "Wait",
+      "webhookId": "454a9960-5503-40e8-8b33-a83954f4b679"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        96
+      ],
+      "id": "0d598975-95dd-4fdd-b463-dd0d73cbfb47",
+      "name": "Wait1",
+      "webhookId": "9bd8338d-d97f-4938-a878-8deea965b9cf"
+    },
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.3,
+      "position": [
+        0,
+        0
+      ],
+      "id": "4f4d2a10-c5cc-4a08-b94f-a4ecb37e2256",
+      "name": "When chat message received",
+      "webhookId": "fe07aca0-8223-42df-ac6f-19dd7d956da2"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Madrid",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "shared": [
+    {
+      "createdAt": "2025-11-02T18:40:43.793Z",
+      "updatedAt": "2025-11-02T18:40:43.793Z",
+      "role": "workflow:owner",
+      "workflowId": "tD5atGz2y5QI5vPA",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": {
+    "node:Schedule Trigger": {
+      "recurrenceRules": []
+    }
+  },
+  "tags": [
+    {
+      "createdAt": "2025-11-02T18:30:25.985Z",
+      "updatedAt": "2025-11-02T18:30:25.985Z",
+      "id": "0LCSIfnWV1L0KZSe",
+      "name": "udia"
+    }
+  ],
+  "triggerCount": 1,
+  "updatedAt": "2025-11-02T18:59:09.000Z",
+  "versionId": "946e4c0b-7ba3-4af3-9de0-0e4df66861e5"
+}
