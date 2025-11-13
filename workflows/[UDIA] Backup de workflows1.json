@@ -46,14 +46,19 @@
             "node": "Fin",
             "type": "main",
             "index": 0
-          }
-        ],
-        [
+          },
           {
-            "node": "Get a file",
+            "node": "Merge1",
             "type": "main",
             "index": 0
           },
+          {
+            "node": "GitHub",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
           {
             "node": "Merge1",
             "type": "main",
@@ -67,17 +72,6 @@
         [
           {
             "node": "Loop Over Items",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get a file": {
-      "main": [
-        [
-          {
-            "node": "Merge1",
             "type": "main",
             "index": 0
           }
@@ -116,11 +110,22 @@
           }
         ]
       ]
+    },
+    "GitHub": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "createdAt": "2025-11-12T11:28:01.914Z",
   "id": "nJKoRqPeOVteJ4v0",
-  "isArchived": false,
+  "isArchived": true,
   "meta": {
     "templateCredsSetupCompleted": true
   },
@@ -248,40 +253,6 @@
       "id": "8d9aef3a-5255-4a5d-89ad-b95dc0576412"
     },
     {
-      "parameters": {
-        "resource": "file",
-        "operation": "get",
-        "owner": {
-          "__rl": true,
-          "value": "={{$node[\"Variables\"].json[\"repo\"][\"owner\"]}}",
-          "mode": "name"
-        },
-        "repository": {
-          "__rl": true,
-          "value": "={{$node[\"Variables\"].json[\"repo\"][\"name\"]}}",
-          "mode": "name"
-        },
-        "filePath": "={{$node[\"Variables\"].json[\"repo\"][\"path\"]}}{{$json[\"name\"]}}.json\n\n",
-        "asBinaryProperty": false,
-        "additionalParameters": {}
-      },
-      "type": "n8n-nodes-base.github",
-      "typeVersion": 1.1,
-      "position": [
-        592,
-        -176
-      ],
-      "id": "8c89da6a-ba78-4eed-8dbf-fa22f97e987a",
-      "name": "Get a file",
-      "webhookId": "a9223157-a14b-4499-ab97-6e464696ddaf",
-      "credentials": {
-        "githubApi": {
-          "id": "2hZ4T8EJNB4tzyBO",
-          "name": "GitHub account"
-        }
-      }
-    },
-    {
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "name": "Replace Me",
@@ -406,6 +377,34 @@
         -240
       ],
       "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "get",
+        "owner": "={{$node[\"Variables\"].json[\"repo\"][\"owner\"]}}",
+        "repository": "={{$node[\"Variables\"].json[\"repo\"][\"name\"]}}",
+        "filePath": "={{$node[\"Variables\"].json[\"repo\"][\"path\"]}}{{$json[\"name\"]}}.json",
+        "asBinaryProperty": false,
+        "additionalParameters": {}
+      },
+      "id": "50774707-4859-4114-9510-264bc80a8303",
+      "name": "GitHub",
+      "type": "n8n-nodes-base.github",
+      "position": [
+        608,
+        -192
+      ],
+      "typeVersion": 1,
+      "alwaysOutputData": true,
+      "webhookId": "10ef61e4-eb99-4816-bb32-d3da7ce0e821",
+      "credentials": {
+        "githubApi": {
+          "id": "2hZ4T8EJNB4tzyBO",
+          "name": "GitHub account"
+        }
+      },
+      "continueOnFail": true
     }
   ],
   "pinData": {},
@@ -424,6 +423,6 @@
   "staticData": null,
   "tags": [],
   "triggerCount": 0,
-  "updatedAt": "2025-11-13T11:50:29.000Z",
-  "versionId": "27682a06-e5d8-4f57-b2af-7324e77b4d33"
+  "updatedAt": "2025-11-13T12:23:29.000Z",
+  "versionId": "73c2c603-9977-4718-8fda-b2532b8088f5"
 }
