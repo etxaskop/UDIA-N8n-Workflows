@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "On clicking 'execute'": {
       "main": [
@@ -185,7 +185,9 @@
   "createdAt": "2025-11-13T11:42:59.070Z",
   "id": "fAZL3f6b4NcOCihb",
   "isArchived": false,
-  "meta": null,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
   "name": "[UDIA] Backup de Workflows",
   "nodes": [
     {
@@ -307,7 +309,13 @@
         320
       ],
       "typeVersion": 1,
-      "webhookId": "d71565b4-092c-4b98-92a2-0cacb3b5b306"
+      "webhookId": "d71565b4-092c-4b98-92a2-0cacb3b5b306",
+      "credentials": {
+        "githubApi": {
+          "id": "2hZ4T8EJNB4tzyBO",
+          "name": "GitHub account"
+        }
+      }
     },
     {
       "parameters": {
@@ -326,7 +334,13 @@
         560
       ],
       "typeVersion": 1,
-      "webhookId": "3ce87142-91d7-4711-b6a9-d137b45a9c8a"
+      "webhookId": "3ce87142-91d7-4711-b6a9-d137b45a9c8a",
+      "credentials": {
+        "githubApi": {
+          "id": "2hZ4T8EJNB4tzyBO",
+          "name": "GitHub account"
+        }
+      }
     },
     {
       "parameters": {
@@ -461,7 +475,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-11-13T12:16:07.000Z",
-  "versionId": "357e77ac-07cd-4573-86a7-968dbb1de1b7"
+  "triggerCount": 1,
+  "updatedAt": "2025-11-13T12:23:40.000Z",
+  "versionId": "0151e69b-6edc-410d-bffe-2b393075be85"
 }
