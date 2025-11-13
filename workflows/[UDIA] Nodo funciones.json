@@ -1,0 +1,103 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "RSS Read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "RSS Read": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-05T11:27:46.768Z",
+  "id": "9cDagiaT2UGKtrWv",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] Nodo funciones",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        16
+      ],
+      "id": "d44ba8ea-066c-47c2-9d7c-476a7a6c3ad4",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://www.techradar.com/feeds.xml",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1.2,
+      "position": [
+        -112,
+        16
+      ],
+      "id": "92dfd922-9393-4461-8014-7afb3bb0e4bf",
+      "name": "RSS Read"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  item.json.myNewField = 1;\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        96,
+        -96
+      ],
+      "id": "18731455-c8da-4aab-8c23-9072b1c0fad8",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-11-05T11:27:46.778Z",
+      "updatedAt": "2025-11-05T11:27:46.778Z",
+      "role": "workflow:owner",
+      "workflowId": "9cDagiaT2UGKtrWv",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-11-02T18:30:25.985Z",
+      "updatedAt": "2025-11-02T18:30:25.985Z",
+      "id": "0LCSIfnWV1L0KZSe",
+      "name": "udia"
+    },
+    {
+      "createdAt": "2025-11-05T11:27:54.265Z",
+      "updatedAt": "2025-11-05T11:27:54.265Z",
+      "id": "c0U49o5gTqIzvH2F",
+      "name": "funciones"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-05T11:37:00.000Z",
+  "versionId": "2864d394-a441-4348-948c-ab3d31170223"
+}
