@@ -1,0 +1,85 @@
+{
+  "active": false,
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-05T11:40:19.946Z",
+  "id": "2xM3d68s8jwmGg3J",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "[UDIA] error trigger",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d6b862e4-01f3-47aa-bf60-242fb4d19efa",
+      "name": "Error Trigger"
+    },
+    {
+      "parameters": {
+        "chatId": "7991924255",
+        "text": "=Error:  {{ $json.execution.error.message }}\nUltimo nodo ejecutado: {{ $json.execution.lastNodeExecuted }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "35f6b291-aedb-4cca-a719-9ad859d1878e",
+      "name": "Send a text message",
+      "webhookId": "859c7c54-483c-45ef-8f34-4ae9241dd3f5",
+      "credentials": {
+        "telegramApi": {
+          "id": "L4gQSEkpsNL6Pjk5",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-11-05T11:40:19.952Z",
+      "updatedAt": "2025-11-05T11:40:19.952Z",
+      "role": "workflow:owner",
+      "workflowId": "2xM3d68s8jwmGg3J",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-11-02T18:30:25.985Z",
+      "updatedAt": "2025-11-02T18:30:25.985Z",
+      "id": "0LCSIfnWV1L0KZSe",
+      "name": "udia"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-05T11:44:51.000Z",
+  "versionId": "57eaaa58-efb2-42a0-bb07-8537704f3453"
+}
