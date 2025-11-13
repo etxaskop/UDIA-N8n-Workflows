@@ -1,0 +1,54 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-11-05T12:08:55.350Z",
+  "id": "5H6ScjFpjXdq79ln",
+  "isArchived": false,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "udiasecurity",
+        "authentication": "basicAuth",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "0acfd10b-5f1f-4c0c-b063-8bd67c5a0397",
+      "name": "Webhook",
+      "webhookId": "0e144378-2280-463d-b492-c9fc193acf7c",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "LTpRh5LKcu3mQBA8",
+          "name": "Udia basic credential"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "createdAt": "2025-11-05T12:08:55.369Z",
+      "updatedAt": "2025-11-05T12:08:55.369Z",
+      "role": "workflow:owner",
+      "workflowId": "5H6ScjFpjXdq79ln",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-05T12:08:55.350Z",
+  "versionId": "e1ef5382-66c3-4096-b179-ef5d8b7a32b6"
+}
