@@ -347,8 +347,8 @@
   },
   "shared": [
     {
-      "createdAt": "2025-11-06T15:48:03.635Z",
       "updatedAt": "2025-11-06T15:48:03.635Z",
+      "createdAt": "2025-11-06T15:48:03.635Z",
       "role": "workflow:owner",
       "workflowId": "ZvaE7qq1GlYEL8nw",
       "projectId": "vToiniJTimIrXduV"
@@ -357,8 +357,8 @@
   "staticData": null,
   "tags": [
     {
-      "createdAt": "2025-11-06T15:48:09.640Z",
       "updatedAt": "2025-11-06T15:48:09.640Z",
+      "createdAt": "2025-11-06T15:48:09.640Z",
       "id": "I6qLXieYKm75w5RQ",
       "name": "agente de ia"
     }
