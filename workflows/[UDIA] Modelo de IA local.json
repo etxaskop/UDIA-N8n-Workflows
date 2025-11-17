@@ -1,0 +1,28 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-11-17T09:10:52.266Z",
+  "id": "1YqaUImhdc9h87rD",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] Modelo de IA local",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-17T09:10:52.276Z",
+      "createdAt": "2025-11-17T09:10:52.276Z",
+      "role": "workflow:owner",
+      "workflowId": "1YqaUImhdc9h87rD",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-17T09:10:52.266Z",
+  "versionId": "0c3f0a05-5259-4d58-9d44-e2ff250c59a7"
+}
