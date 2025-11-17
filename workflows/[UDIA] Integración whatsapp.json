@@ -1,0 +1,28 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-11-17T07:44:47.229Z",
+  "id": "vIVGkhtIz8miB1Cn",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] Integración whatsapp",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-17T07:44:47.237Z",
+      "createdAt": "2025-11-17T07:44:47.237Z",
+      "role": "workflow:owner",
+      "workflowId": "vIVGkhtIz8miB1Cn",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-17T07:44:47.229Z",
+  "versionId": "373c9852-9bf9-4a42-aa55-33b547732d02"
+}
