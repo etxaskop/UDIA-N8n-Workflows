@@ -1,0 +1,259 @@
+{
+  "active": false,
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "variables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "variables": {
+      "main": [
+        [
+          {
+            "node": "Accedo al sitemap",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Accedo al sitemap": {
+      "main": [
+        [
+          {
+            "node": "XML",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "XML": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Call '[UDIA] SubWF Nodos de extracción de datos con IA'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call '[UDIA] SubWF Nodos de extracción de datos con IA'": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "createdAt": "2025-11-17T08:34:04.691Z",
+  "id": "He3jjqIbYVzo5hGc",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] Nodos de extracción de datos con IA",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        0
+      ],
+      "id": "1e625ea2-7c87-41bb-97d3-04aec9b48a76",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.xml",
+      "typeVersion": 1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "7a04768e-1f3c-45d3-b521-595547a01090",
+      "name": "XML"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "088867fc-999d-4766-bf17-68c00be33f93",
+              "name": "sitemap",
+              "value": "https://mascotalandia.es/sitemap-products-1-es.xml",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -96,
+        0
+      ],
+      "id": "8637fa1c-d0a1-47a8-8c95-5a43b75eb197",
+      "name": "variables"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.sitemap }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        32,
+        0
+      ],
+      "id": "a72eb295-26b8-4569-a860-f86f9e1f4e54",
+      "name": "Accedo al sitemap"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "urlset.url",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        416,
+        0
+      ],
+      "id": "9d8fc917-24dd-404c-b1b0-5dfe2d7cd249",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "maxItems": 10
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        560,
+        0
+      ],
+      "id": "aef8c76d-e9bd-4a02-afda-89a66414b89c",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        768,
+        0
+      ],
+      "id": "fbea3b0f-2d98-476a-946b-e03c2d782079",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "E48duLZjjKGT4vLY",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/E48duLZjjKGT4vLY",
+          "cachedResultName": "[UDIA] SubWF Nodos de extracción de datos con IA"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "",
+              "displayName": "",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "type": "string",
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        1040,
+        128
+      ],
+      "id": "e07cbec3-5129-4352-9e1e-7c9dc032ea98",
+      "name": "Call '[UDIA] SubWF Nodos de extracción de datos con IA'"
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-17T08:34:04.695Z",
+      "createdAt": "2025-11-17T08:34:04.695Z",
+      "role": "workflow:owner",
+      "workflowId": "He3jjqIbYVzo5hGc",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-17T08:57:45.000Z",
+  "versionId": "0bb6e5eb-ad18-41eb-ba81-70041b767011"
+}
