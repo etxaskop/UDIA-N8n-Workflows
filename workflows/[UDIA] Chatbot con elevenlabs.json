@@ -1,5 +1,5 @@
 {
-  "active": false,
+  "active": true,
   "connections": {
     "Listen": {
       "main": [
@@ -58,13 +58,7 @@
     },
     "Answer questions with a vector store": {
       "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Pinecone Vector Store1": {
@@ -84,6 +78,28 @@
           {
             "node": "Answer questions with a vector store",
             "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Pinecone Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Pinecone Vector Store": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -150,8 +166,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        80,
-        208
+        32,
+        176
       ],
       "id": "97fccd6e-a116-4496-943e-fa065588c128",
       "name": "Google Gemini Chat Model",
@@ -170,8 +186,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        240,
-        208
+        176,
+        176
       ],
       "id": "f2165a10-bc56-4767-a872-8a7da6a2299d",
       "name": "Simple Memory"
@@ -197,7 +213,7 @@
     },
     {
       "parameters": {
-        "description": "Documentación de UDIA con preguntas y respuestas sobre sus servicios, soluciones, beneficios y características.\n"
+        "description": "Trabaja con tu pinecone vector store donde tienes toda la información sobr Udia. Que es y lo que trabajan.\n"
       },
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1.1,
@@ -258,6 +274,54 @@
           "name": "OpenAi account"
         }
       }
+    },
+    {
+      "parameters": {
+        "mode": "retrieve-as-tool",
+        "toolDescription": "Trabaja con tu pinecone vector store donde tienes toda la información sobr Udia.es y lo que trabajan.",
+        "pineconeIndex": {
+          "__rl": true,
+          "value": "ragudia",
+          "mode": "list",
+          "cachedResultName": "ragudia"
+        },
+        "options": {
+          "pineconeNamespace": "ragudia"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStorePinecone",
+      "typeVersion": 1.3,
+      "position": [
+        608,
+        208
+      ],
+      "id": "12107de8-c536-4670-83c7-ae2288fbd956",
+      "name": "Pinecone Vector Store",
+      "credentials": {
+        "pineconeApi": {
+          "id": "e4RyPD5IBgo5uLfc",
+          "name": "PineconeApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        672,
+        352
+      ],
+      "id": "55b9dc3e-0c89-42d2-82ef-00678a16bb44",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "LOlbps8rbIEAqCO2",
+          "name": "OpenAi account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -275,7 +339,7 @@
   ],
   "staticData": null,
   "tags": [],
-  "triggerCount": 0,
-  "updatedAt": "2025-11-18T19:39:34.000Z",
-  "versionId": "c6d8e139-859f-49f5-86c7-560c8324fed8"
+  "triggerCount": 1,
+  "updatedAt": "2025-11-19T08:00:25.000Z",
+  "versionId": "492f4de8-f406-48e3-9cd1-e1262b87e1bf"
 }
