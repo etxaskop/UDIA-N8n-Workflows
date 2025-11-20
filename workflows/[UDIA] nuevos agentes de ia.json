@@ -1,0 +1,35 @@
+{
+  "active": false,
+  "connections": {},
+  "createdAt": "2025-11-20T12:31:36.250Z",
+  "id": "PiaP7Zcgqp1UNUKC",
+  "isArchived": false,
+  "meta": null,
+  "name": "[UDIA] nuevos agentes de ia",
+  "nodes": [],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "shared": [
+    {
+      "updatedAt": "2025-11-20T12:31:36.253Z",
+      "createdAt": "2025-11-20T12:31:36.253Z",
+      "role": "workflow:owner",
+      "workflowId": "PiaP7Zcgqp1UNUKC",
+      "projectId": "vToiniJTimIrXduV"
+    }
+  ],
+  "staticData": null,
+  "tags": [
+    {
+      "updatedAt": "2025-11-02T18:30:25.985Z",
+      "createdAt": "2025-11-02T18:30:25.985Z",
+      "id": "0LCSIfnWV1L0KZSe",
+      "name": "udia"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-11-20T12:49:56.000Z",
+  "versionId": "cf4df863-6d6a-483a-a239-a6d544fcbb8b"
+}
