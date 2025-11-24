@@ -34,23 +34,23 @@
         ]
       ]
     },
-    "OpenAI Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "When chat message received": {
       "main": [
         [
           {
             "node": "AI Agent",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -141,31 +141,6 @@
     },
     {
       "parameters": {
-        "model": {
-          "__rl": true,
-          "value": "gpt-4o-mini",
-          "mode": "list",
-          "cachedResultName": "gpt-4o-mini"
-        },
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        80,
-        192
-      ],
-      "id": "90f8be56-e3f7-46e5-95b5-0f06baf3a220",
-      "name": "OpenAI Chat Model",
-      "credentials": {
-        "openAiApi": {
-          "id": "LOlbps8rbIEAqCO2",
-          "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "public": true,
         "options": {}
       },
@@ -178,6 +153,26 @@
       "id": "c51cddc1-168b-4b87-bcf2-30cdf732c34b",
       "name": "When chat message received",
       "webhookId": "4527ddbd-9017-432f-8e69-f901b1c5210e"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.0-flash-001",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        80,
+        192
+      ],
+      "id": "009c9fcf-f700-4b58-a299-2f4834c18ec0",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "gBKFpVfdpSnzbXOL",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -203,6 +198,6 @@
     }
   ],
   "triggerCount": 1,
-  "updatedAt": "2025-11-13T12:23:32.000Z",
-  "versionId": "74c3d619-10f7-4547-846d-04ac0ebd6cad"
+  "updatedAt": "2025-11-24T10:50:30.000Z",
+  "versionId": "047d9fbb-db7b-446d-b7d2-59c488a61b3c"
 }
